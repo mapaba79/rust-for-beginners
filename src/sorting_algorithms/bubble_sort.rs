@@ -1,3 +1,5 @@
+use std::io;
+
 fn bubble_sort(arr: &mut Vec<i32>) {
     let n = arr.len();
     for i in 0..n {
@@ -15,9 +17,20 @@ fn bubble_sort(arr: &mut Vec<i32>) {
 }
 
 fn main() {
-    let mut numbers = vec![64, 34, 25, 12, 22, 11, 90];
-    println!("Unsorted array: {:?}", numbers);
+    println!("Enter numbers to sort, separated by spaces: ");
 
+    let mut input = String::new();
+    io::stdin()
+        .read_line(&mut input)
+        .expect("Failed to read input");
+
+    let mut numbers: Vec<i32> = input
+        .split_whitespace()
+        .map(|s| s.parse().expect("Please enter valid integers"))
+        .collect();
+
+    println!("Unsorted array: {:?}", numbers);
     bubble_sort(&mut numbers);
     println!("Sorted array: {:?}", numbers);
 }
+
