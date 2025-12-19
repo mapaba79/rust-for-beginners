@@ -4,3 +4,8 @@ version = "0.1.0"
 edition = "2021"
 
 [dependencies]
+rand = "0.9.0"
+
+[[bin]]
+name = "guessing_game"
+path = "src/games/guessing_game.rs"
